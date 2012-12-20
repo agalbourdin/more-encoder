@@ -20,7 +20,7 @@ class Encoder
     public static function encode($pStr)
     {
         $iv = mcrypt_create_iv(mcrypt_get_iv_size(MCRYPT_BLOWFISH, MCRYPT_MODE_ECB), MCRYPT_RAND);
-        return bin2hex(mcrypt_encrypt(MCRYPT_BLOWFISH, pack("H*", \Agl::app()->getConfig('@module[' . \Agl::AGL_MORE_POOL . '/encoder]/key')), $pStr, MCRYPT_MODE_ECB, $iv));
+        return bin2hex(mcrypt_encrypt(MCRYPT_BLOWFISH, \Agl::app()->getConfig('@module[' . \Agl::AGL_MORE_POOL . '/encoder]/key'), $pStr, MCRYPT_MODE_ECB, $iv));
     }
 
     /**
@@ -32,7 +32,7 @@ class Encoder
     public static function decode($pStr)
     {
         $iv = mcrypt_create_iv(mcrypt_get_iv_size(MCRYPT_BLOWFISH, MCRYPT_MODE_ECB), MCRYPT_RAND);
-        return trim(mcrypt_decrypt(MCRYPT_BLOWFISH, pack("H*", \Agl::app()->getConfig('@module[' . \Agl::AGL_MORE_POOL . '/encoder]/key')), self::_hex2bin($pStr), MCRYPT_MODE_ECB, $iv), "\0");
+        return trim(mcrypt_decrypt(MCRYPT_BLOWFISH, \Agl::app()->getConfig('@module[' . \Agl::AGL_MORE_POOL . '/encoder]/key'), self::_hex2bin($pStr), MCRYPT_MODE_ECB, $iv), "\0");
     }
 
     /**
