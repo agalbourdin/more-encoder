@@ -7,4 +7,4 @@ Additional Encoder/Hasher module for AGL.
 
 [**www.agl.io/more/encoder**](http://www.agl.io/more/encoder)
 
-> External libraries used by this module: [phpass](http://www.openwall.com/phpass/)
+> External libraries used by this module: [password_compat](https://github.com/ircmaxell/password_compat)

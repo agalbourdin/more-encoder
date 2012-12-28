@@ -14,12 +14,7 @@ class Hasher
     /**
      * Library filename.
      */
-    const LIB = 'PasswordHash.php';
-
-    /**
-     * An instance of the PasswordHash library.
-     */
-    private $_hasher = NULL;
+    const LIB = 'password.php';
 
     /**
      * The Hasher constructor.
@@ -28,7 +23,6 @@ class Hasher
     public function __construct()
     {
         \Agl::loadModuleLib(__DIR__, self::LIB);
-        $this->_hasher = new \PasswordHash(8, false);
     }
 
     /**
@@ -39,7 +33,7 @@ class Hasher
      */
     public function hash($pPassword)
     {
-        return $this->_hasher->HashPassword($pPassword);
+        return password_hash($pPassword, PASSWORD_BCRYPT);
     }
 
     /**
@@ -51,6 +45,6 @@ class Hasher
      */
     public function check($pPassword, $pHash)
     {
-        return $this->_hasher->CheckPassword($pPassword, $pHash);
+        return password_verify($pPassword, $pHash);
     }
 }
