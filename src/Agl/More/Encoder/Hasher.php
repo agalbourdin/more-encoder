@@ -12,26 +12,12 @@ namespace Agl\More\Encoder;
 class Hasher
 {
     /**
-     * Library filename.
-     */
-    const LIB = 'password.php';
-
-    /**
-     * The Hasher constructor.
-     * Require the PasswordHash library and instanciate it.
-     */
-    public function __construct()
-    {
-        \Agl::loadModuleLib(__DIR__, self::LIB);
-    }
-
-    /**
      * Hash a string.
      *
      * @param string $pPassword The string to hash
      * @return string Hashed string
      */
-    public function hash($pPassword)
+    public static function hash($pPassword)
     {
         return password_hash($pPassword, PASSWORD_BCRYPT);
     }
@@ -43,7 +29,7 @@ class Hasher
      * @param string $pHash The Hash
      * @return bool
      */
-    public function check($pPassword, $pHash)
+    public static function check($pPassword, $pHash)
     {
         return password_verify($pPassword, $pHash);
     }

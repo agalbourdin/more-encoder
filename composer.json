@@ -1,15 +1,22 @@
 {
-    "name"       : "agl/more-encoder",
-    "type"       : "agl-module",
-    "description": "Additional Encoder/Hasher module for AGL.",
-    "keywords"   : [ "agl", "encoder", "hasher" ],
-    "homepage"   : "http://www.agl.io/",
-    "license"    : "MIT",
+    "name": "agl/more-encoder",
+    "description": "AGL Framework / Encoder and Hasher package.",
+    "keywords": [ "agl", "encoder", "hasher", "encode", "hash", "password" ],
+    "homepage": "http://www.agl.io/",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Alexis Galbourdin",
+            "email": "ask@agl.io"
+        }
+    ],
     "require": {
-        "php"                : ">=5.3.7",
-        "composer/installers": "*"
+        "php": ">=5.3.7",
+        "ircmaxell/password-compat": "*"
     },
-    "extra": {
-        "installer-name": "Encoder"
+    "autoload": {
+        "psr-0": {
+            "Agl\\More\\Encoder": "src/"
+        }
     }
 }
