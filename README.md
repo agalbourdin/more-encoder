@@ -1,48 +1,39 @@
 More/Encoder
 ============
 
-Additional Encoder/Hasher module for AGL.
+Additional Encoder and Hasher module for AGL.
 
 ## Installation
 
-Add the following package to the `require` section of your `composer.json` file:
+Add the following package to the `require` section of your application's `composer.json` file:
 
 	"agl/more-encoder": "*"
 
-## Configuration
+## Encoder
 
-### Encoder
+### Configuration
 
-To use the Encoder class, you must create a key which will be used to encode and decode strings.<br>
-Create a configuration file into your application:
-
-**app/etc/config/more/encoder.json**
+In your application, create a file `app/etc/config/more/encoder.json` with the following content:
 
 	{
 	    "key": "{YOUR_KEY}"
 	}
 
-### Hasher
+Where `{YOUR_KEY}` is a random key (used to encode and decode strings).
 
-The Hasher class doesn't require any configuration.
-
-## Usage
-
-### Encoder
+### Usage
 
 	$encoder = Agl::getInstance('more/encoder');
-	$encoder::encode('string');
-	$encoder::decode($encodedString);
+	$encodedString = $encoder::encode('string');
+	$encoder::decode($encodedString); // string
 
-### Hasher
+## Hasher
 
-	$hasher = Agl::getInstance('more/encoder/hasher');
-	$hasher::hash('password');
-	$hasher::check('password', $hash);
+### Configuration
 
-## More
+No configuration required. This module implements the [password_compat](https://github.com/ircmaxell/password_compat) library, which implements the [PHP Password Hashing Functions](http://php.net/manual/en/ref.password.php) if not available (PHP < 5.5.0).
 
-Learn more about AGL by visiting [**www.agl.io**](http://www.agl.io/)
+### Usage
 
-> Packages used by this module:
-> [ircmaxell/password-compat](https://packagist.org/packages/ircmaxell/password-compat)
+	$hash = password_hash('password', PASSWORD_DEFAULT);
+	$valid = password_verify('password', $hash); // true
