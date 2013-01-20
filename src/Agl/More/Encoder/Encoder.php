@@ -14,6 +14,13 @@ use \Agl;
 class Encoder
 {
     /**
+     * Key used to encode and decode strings.
+     *
+     * @var null|string
+     */
+    private $_key = NULL;
+
+    /**
      * Convert an hexadecimal string into a binary string.
      *
      * @param string $pSource Hexadecimal string
@@ -31,15 +38,29 @@ class Encoder
     }
 
     /**
+     * Instatiate the class and register the key.
+     *
+     * @param null|string $pKey
+     */
+    public function __construct($pKey = NULL)
+    {
+        if ($pKey === NULL) {
+            $this->_key = Agl::app()->getConfig('@module[' . Agl::AGL_MORE_POOL . '/encoder]/key');
+        } else {
+            $this->_key = $pKey;
+        }
+    }
+
+    /**
      * Encode a string.
      *
      * @param string $pStr Strin to encode
      * @return string Encoded string
      */
-    public static function encode($pStr)
+    public function encode($pStr)
     {
         $iv = mcrypt_create_iv(mcrypt_get_iv_size(MCRYPT_BLOWFISH, MCRYPT_MODE_ECB), MCRYPT_RAND);
-        return bin2hex(mcrypt_encrypt(MCRYPT_BLOWFISH, Agl::app()->getConfig('@module[' . Agl::AGL_MORE_POOL . '/encoder]/key'), $pStr, MCRYPT_MODE_ECB, $iv));
+        return bin2hex(mcrypt_encrypt(MCRYPT_BLOWFISH, $this->_key, $pStr, MCRYPT_MODE_ECB, $iv));
     }
 
     /**
@@ -48,9 +69,9 @@ class Encoder
      * @param string $pStr String to decode
      * @return string Decoded string
      */
-    public static function decode($pStr)
+    public function decode($pStr)
     {
         $iv = mcrypt_create_iv(mcrypt_get_iv_size(MCRYPT_BLOWFISH, MCRYPT_MODE_ECB), MCRYPT_RAND);
-        return trim(mcrypt_decrypt(MCRYPT_BLOWFISH, Agl::app()->getConfig('@module[' . Agl::AGL_MORE_POOL . '/encoder]/key'), self::_hex2bin($pStr), MCRYPT_MODE_ECB, $iv), "\0");
+        return trim(mcrypt_decrypt(MCRYPT_BLOWFISH, $this->_key, self::_hex2bin($pStr), MCRYPT_MODE_ECB, $iv), "\0");
     }
 }
