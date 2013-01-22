@@ -1,7 +1,7 @@
 <?php
 namespace Agl\More\Encoder;
 
-use \Agl;
+use \Agl\Core\Agl;
 
 /**
  * A set of methods to encode and decode strings.
