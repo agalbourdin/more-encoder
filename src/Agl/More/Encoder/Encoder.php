@@ -28,13 +28,17 @@ class Encoder
      */
     private static function _hex2bin($pSource)
     {
-        $strlen = strlen($pSource);
-        $bin = '';
-        for ($i = 0; $i < strlen($pSource); $i = $i + 2) {
-            $bin .= chr(hexdec(substr($pSource, $i, 2)));
+        if (version_compare(PHP_VERSION, '5.4.0', '<')) {
+            $strlen = strlen($pSource);
+            $bin = '';
+            for ($i = 0; $i < strlen($pSource); $i = $i + 2) {
+                $bin .= chr(hexdec(substr($pSource, $i, 2)));
+            }
+
+            return $bin;
         }
 
-        return $bin;
+        return hex2bin($pSource);
     }
 
     /**
