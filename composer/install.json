@@ -1,0 +1,6 @@
+{
+	"config/main.json": {
+		"dir": "app/etc/config/more/encoder/",
+		"file": "main.json"
+	}
+}
