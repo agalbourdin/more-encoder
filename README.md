@@ -9,21 +9,19 @@ Add the following package to the `require` section of your application's `compos
 
 	"agl/more-encoder": "*"
 
+Then run the following command:
+
+	php composer.phar update
+
 ## Encoder
 
 ### Configuration
 
-In your application, create a file `app/etc/config/more/encoder.json` with the following content:
-
-	{
-	    "key": "{YOUR_KEY}"
-	}
-
-Where `{YOUR_KEY}` is a random key (used to encode and decode strings).
+Edit `app/etc/config/more/encoder/main.json` and enter a key value (used to encode and decode strings, choose a unique key).
 
 ### Usage
 
-	$encoder = Agl::getInstance('more/encoder');
+	$encoder       = Agl::getInstance('more/encoder');
 	$encodedString = $encoder::encode('string');
 	$encoder::decode($encodedString); // string
 
@@ -35,5 +33,5 @@ No configuration required. This module implements the [password_compat](https://
 
 ### Usage
 
-	$hash = password_hash('password', PASSWORD_DEFAULT);
+	$hash  = password_hash('password', PASSWORD_DEFAULT);
 	$valid = password_verify('password', $hash); // true
