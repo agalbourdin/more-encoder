@@ -1,7 +1,8 @@
 <?php
 namespace Agl\More\Encoder;
 
-use \Agl\Core\Agl;
+use \Agl\Core\Agl,
+    \Exception;
 
 /**
  * A set of methods to encode and decode strings.
@@ -52,6 +53,10 @@ class Encoder
             $this->_key = Agl::app()->getConfig('@module[' . Agl::AGL_MORE_POOL . '/encoder]/key');
         } else {
             $this->_key = $pKey;
+        }
+
+        if ($this->_key === '') {
+            throw new Exception('Encoder Key is not defined');
         }
     }
 
