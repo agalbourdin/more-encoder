@@ -17,7 +17,7 @@ Then run the following command:
 
 ### Configuration
 
-Edit `app/etc/config/more/encoder/main.json` and enter a key value (used to encode and decode strings, choose a unique key).
+Edit `app/etc/config/more/encoder/main.php` and enter a key value (used to encode and decode strings, choose a unique key).
 
 ### Usage
 
