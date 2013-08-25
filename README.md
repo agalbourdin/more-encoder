@@ -1,6 +1,9 @@
 AGL Framework - More/Encoder
 =======================
 
+[![Latest Stable Version](https://poser.pugx.org/agl/more-encoder/v/stable.png)](https://packagist.org/packages/agl/more-encoder)
+[![Build Status](https://travis-ci.org/agl-php/more-encoder.png)](https://travis-ci.org/agl-php/more-encoder)
+
 Additional Encoder module for [AGL Framework](https://github.com/agl-php/agl-app).
 
 ## Installation
