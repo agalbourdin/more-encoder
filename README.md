@@ -1,37 +1,26 @@
-More/Encoder
-============
+AGL Framework - More/Encoder
+=======================
 
-Additional Encoder and Hasher module for AGL.
+Additional Encoder module for [AGL Framework](https://github.com/agl-php/agl-app).
 
 ## Installation
 
-Add the following package to the `require` section of your application's `composer.json` file:
+Run the following command in the root of your AGL application:
 
-	"agl/more-encoder": "*"
+	php composer.phar require agl/more-encoder:*
 
-Then run the following command:
+## Configuration
 
-	php composer.phar update
+Edit `app/etc/config/more/encoder/main.php` and enter a key (used to encode and decode strings, must be unique).
 
-## Encoder
+## Usage
 
-### Configuration
+	$encoder = Agl::getInstance('more/encoder');
 
-Edit `app/etc/config/more/encoder/main.php` and enter a key value (used to encode and decode strings, choose a unique key).
+Encode string:
 
-### Usage
+	$encoder->encode('string');
 
-	$encoder       = Agl::getInstance('more/encoder');
-	$encodedString = $encoder::encode('string');
-	$encoder::decode($encodedString); // string
+Decode string:
 
-## Hasher
-
-### Configuration
-
-No configuration required. This module implements the [password_compat](https://github.com/ircmaxell/password_compat) library, which implements the [PHP Password Hashing Functions](http://php.net/manual/en/ref.password.php) if not available (PHP < 5.5.0).
-
-### Usage
-
-	$hash  = password_hash('password', PASSWORD_DEFAULT);
-	$valid = password_verify('password', $hash); // true
+	$encoder->decode($encodedString);

@@ -1,7 +1,7 @@
 {
     "name": "agl/more-encoder",
-    "description": "AGL Framework / Encoder and Hasher package.",
-    "keywords": [ "agl", "encoder", "hasher", "encode", "hash", "password" ],
+    "description": "AGL Framework / Encoder module.",
+    "keywords": [ "agl", "encoder", "encode", "decoder", "decode" ],
     "homepage": "http://www.agl.io/",
     "license": "MIT",
     "authors": [
@@ -11,9 +11,8 @@
         }
     ],
     "require": {
-        "php": ">=5.3.0",
-        "ext-mcrypt": "*",
-        "ircmaxell/password-compat": "1.*"
+        "agl/core": "*",
+        "ext-mcrypt": "*"
     },
     "autoload": {
         "psr-0": {
