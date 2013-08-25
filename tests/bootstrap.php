@@ -2,6 +2,6 @@
 /**
  * You shouldn't have to edit following lines.
  */
-define('MODULE_PATH', dirname(__DIR__) . '/src/Agl/More/Encoder/');
+define('COMPOSER_DIR', dirname(__DIR__) . '/vendor/');
 
-require(MODULE_PATH . 'Encoder.php');
+require(COMPOSER_DIR . 'autoload.php');

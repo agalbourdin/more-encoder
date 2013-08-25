@@ -18,5 +18,7 @@
         "psr-0": {
             "Agl\\More\\Encoder": "src/"
         }
-    }
+    },
+
+    "minimum-stability": "dev"
 }
