@@ -12,6 +12,7 @@
     ],
     "require": {
         "agl/core": "*",
+        "ircmaxell/password-compat": "*",
         "ext-mcrypt": "*"
     },
     "autoload": {
