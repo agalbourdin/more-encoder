@@ -16,8 +16,8 @@
         "ext-mcrypt": "*"
     },
     "autoload": {
-        "psr-0": {
-            "Agl\\More\\Encoder": "src/"
+        "psr-4": {
+            "Agl\\More\\Encoder\\": "src/"
         }
     },
 
